@@ -11,9 +11,16 @@ trait ConsoleTools
     /**
      * Publish package migrations.
      *
+     * Laravel 11 introduced Illuminate\Support\ServiceProvider::publishesMigrations(array $paths, $groups = null).
+     * Parameter types are intentionally omitted so this trait method stays
+     * signature-compatible with the framework method it overrides.
+     *
+     * @param string $package
+     * @param bool   $isModule
+     *
      * @return void
      */
-    protected function publishesMigrations(string $package, bool $isModule = false): void
+    protected function publishesMigrations($package, $isModule = false): void
     {
         if (! $this->publishesResources()) {
             return;
